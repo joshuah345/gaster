@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.0
       with:
           name: gaster-linux
-          path: /Users/runner/work/gaster/
+          path: /home/runner/work/gaster/
 
           if-no-files-found: warn
 
