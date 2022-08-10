@@ -1,0 +1,51 @@
+name: Build gaster
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-libusb-linux:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt install libusb-1.0-0-dev  
+
+    - name: run make
+      run: make libusb
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+          name: gaster-linux
+          path: /home/runner/work/gaster/
+
+          if-no-files-found: warn
+
+          retention-days: 30
+      
+  build-macOS:
+
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: make macos
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: gaster-mac
+          path: /Users/runner/work/gaster/
+
+          if-no-files-found: warn
+
+          retention-days: 30
