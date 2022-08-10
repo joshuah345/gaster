@@ -2,9 +2,9 @@ name: Build gaster
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "imagefix" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "imagefix" ]
 
 jobs:
   build-libusb-linux:
